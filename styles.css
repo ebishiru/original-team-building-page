@@ -1,0 +1,234 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* CSS reset above */
+
+
+body {
+    background-color: #f7f6ec;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* code above for testing purposes only, please remove after when adding to main php */
+
+.main-title {
+    text-align: center;
+    margin: 1rem 2rem;
+    color: #333333;
+    font-family: "Times New Roman", sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+}
+
+.row-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 35px 0;
+}
+
+.centered-content {
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.first-row-container p {
+    text-align: center;
+    color: #6d6d65;
+    font-family: Metropolis, sans-serif;
+    font-size: 21px;
+    font-weight: 500px;
+    line-height: 28px;
+}
+
+.img-container {
+    padding: 15px;
+    overflow: hidden;
+}
+
+.img-container > figure {
+    position: relative;
+    width: 200%;
+}
+
+.row-container img {
+    border-radius: 10px;
+    width: 100%;
+    max-width: 555px;
+    height: auto;
+}
+
+.text-column-container {
+    padding: 15px;
+}
+
+.text-column-container h3 {
+    padding: 5px 35px 20px;
+    color: #444444;
+    font-family: "Times New Roman", sans-serif;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 49px;
+    text-align: left;
+}
+
+.text-column-container p, .text-column-container hr {
+    color: #6d6d65;
+    font-family: Metropolis, sans-serif;
+    font-size: 18px;
+    font-weight: 400px;
+    letter-spacing: 0.3px;
+    line-height: 1.5rem;
+}
+
+.text-column-container p {
+    padding: 5px;
+}
+
+.text-column-container hr {
+    margin: 15px 0;
+}
+
+.bold-words {
+    font-weight: bold;
+}
+
+.slideshow-container {
+    position: relative;
+    width: 100%;
+    max-width: 555px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+}
+
+.slideshow-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    z-index: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0%);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.8s ease forwards;
+    z-index: 2;
+}
+
+.slide-out-left {
+    animation: slideOutLeft 0.8s ease forwards;
+    z-index: 1;
+}
+
+.slideshow-bullets {
+    text-align: center;
+    margin-top: 15px;
+    position: relative;
+    z-index: 10;
+}
+
+.bullet {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin: 0 6px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.bullet.active {
+    background-color: #444;
+}
+
+.slideshow-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+@media (max-width: 1025px) {
+    .row-container {
+        display: block;
+    }
+}

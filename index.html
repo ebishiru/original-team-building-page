@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loriginal Team Building</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <section>
+        <h2 class="main-title">Enhance Your Workplace with Unique Team Building Activities at L’Original</h2>
+        <div class="row-container first-row-container">
+            <div class="centered-content">
+                <p>At L’Original, we transform team building into a creative and engaging experience through hands-on art workshops and interactive activities. Designed to foster collaboration, innovation, and communication, our unique programs help teams strengthen relationships, spark fresh ideas, and have fun together. Whether it’s painting vibrant murals or crafting personalized art, our sessions inspire creativity and unity, leaving your team motivated and ready to tackle new challenges.</p>
+            </div>
+            <div class="centered-content img-container">
+                <img src="https://web.archive.org/web/20250119003533im_/https://loriginal.org/wp-content/uploads/2024/12/284533645_1890170881174899_4687183235715934538_n-1536x1039.jpg" alt="studio image 1"/>
+            </div>
+        </div>
+        <div class="row-container second-row-container">
+            <div class="centered-content img-container">
+                <div class="slideshow-wrapper" data-images='["https://web.archive.org/web/20250119003533im_/https://loriginal.org/wp-content/uploads/2024/12/429898127_895598959241013_6903446439233379236_n-1024x683.jpg","https://web.archive.org/web/20250119003533im_/https://loriginal.org/wp-content/uploads/2024/12/430482909_895596849241224_719694930022068149_n-1024x576.jpg","https://web.archive.org/web/20250119003533im_/https://loriginal.org/wp-content/uploads/2024/12/284533645_1890170881174899_4687183235715934538_n-1536x1039.jpg"]'>
+                    <div class="slideshow-container">
+                        <img class="slideshow-img slide1" src="" alt="Slide 1" />
+                        <img class="slideshow-img slide2 hidden" src="" alt="Slide 2" />
+                    </div>
+                    <div class="slideshow-bullets"></div>
+                </div>
+            </div>
+            <div class="text-column-container">
+                <h3>Team Building Activities Tailored for Teams</h3>
+                <p>At L’Original, we redefine <span class="bold-words">team building</span> by fostering creativity and collaboration through engaging art-based workshops and live experiences.</p>
+                <hr />
+                <p>Whether you are exploring <span class="bold-words">team building activities for work</span> or looking for <span class="bold-words">fun team building exercises</span>, our gallery offers a distinctive platform to transform your team’s dynamics.</p>
+                <hr />
+                <p>Our <span class="bold-words">team building activities for teams</span> and <span class="bold-words">team building games for small groups</span> ensure every participant feels included and inspired.</p>
+            </div>
+        </div>
+        <div class="row-container third-row-container">
+            <div class="text-column-container">
+                <h3>Corporate Team Building Activities That Inspire</h3>
+                <p>In our gallery dedicated to street art, we provide <span class="bold-words">corporate team building activities</span> that stimulate innovation and align with your company’s values.</p>
+                <hr />
+                <p>Through our sessions, employees engage in <span class="bold-words">team building exercises for small groups</span> or large corporate events, ensuring inclusivity and maximum impact. Whether it’s choosing a print that represents your corporate identity or creating custom artworks, your team will leave inspired and united. </p>
+                <hr />
+                <p>Our <span class="bold-words">corporate team building event ideas</span> are designed to help your organization build a cohesive and motivated workforce.</p>
+            </div>
+            <div class="centered-content img-container">
+                <div class="slideshow-wrapper" data-images='["https://web.archive.org/web/20250222110940im_/https://loriginal.org/wp-content/uploads/2024/12/430470354_895596872574555_1978860230065548701_n-1024x576.jpg","https://web.archive.org/web/20250222110940im_/https://loriginal.org/wp-content/uploads/2024/12/287499968_1900125693512751_2001862726997998204_n-1024x576.jpg"]'>
+                    <div class="slideshow-container">
+                        <img class="slideshow-img slide1" src="" alt="Slide 1" />
+                        <img class="slideshow-img slide2 hidden" src="" alt="Slide 2" />
+                    </div>
+                    <div class="slideshow-bullets"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.slideshow-wrapper').forEach(wrapper => {
+            const images = JSON.parse(wrapper.dataset.images);
+            let currentIndex = 0;
+            
+            const img1 = wrapper.querySelector('.slide1');
+            const img2 = wrapper.querySelector('.slide2');
+            const bulletContainer = wrapper.querySelector('.slideshow-bullets');
+            
+            let currentImg = img1;
+            let nextImg = img2;
+            let intervalId;
+
+            // Create bullets
+            images.forEach((_, i) => {
+                const bullet = document.createElement("span");
+                bullet.classList.add("bullet");
+                if (i === 0) bullet.classList.add("active");
+                bullet.addEventListener("click", () => {
+                    jumpToImage(i);
+                });
+                bulletContainer.appendChild(bullet);
+            });
+
+            function updateBullets() {
+                wrapper.querySelectorAll(".bullet").forEach((b, i) => {
+                    b.classList.toggle("active", i === currentIndex);
+                });
+            }
+
+            function showNextImage() {
+                const nextIndex = (currentIndex + 1) % images.length;
+                transitionToImage(nextIndex);
+            }
+
+            function jumpToImage(index) {
+                if (index === currentIndex) return;
+                clearInterval(intervalId);
+                transitionToImage(index);
+                intervalId = setInterval(showNextImage, 5000);
+            }
+
+            function transitionToImage(targetIndex) {
+                nextImg.src = images[targetIndex];
+
+                currentImg.classList.remove("hidden", "slide-in-right", "slide-out-left");
+                nextImg.classList.remove("hidden", "slide-in-right", "slide-out-left");
+
+                currentImg.classList.add("slide-out-left");
+                nextImg.classList.add("slide-in-right");
+
+                setTimeout(() => {
+                    currentImg.classList.add("hidden");
+                    currentImg.classList.remove("slide-out-left");
+                    nextImg.classList.remove("slide-in-right");
+
+                    [currentImg, nextImg] = [nextImg, currentImg];
+                    currentIndex = targetIndex;
+                    updateBullets();
+                }, 800);
+            }
+
+            // Initial setup
+            currentImg.src = images[currentIndex];
+            currentIndex = (currentIndex + 1) % images.length;
+            intervalId = setInterval(showNextImage, 5000);
+        });
+    </script>
+
+
+</body>
+</html>
